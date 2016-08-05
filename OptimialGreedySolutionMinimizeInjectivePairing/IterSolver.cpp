@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -33,10 +34,16 @@ int IterSolve(ProblemInfo *PInfo) {
     }
     
     //now we need to fill out the table when there are more skis than skiers
+    int sum = abs(S[0]-H[0]);
     for (int i = 1; i<=m; i++){
         for (int j = 1; j<=n; j++){
             if (i==j){
-                A[i][j]=fillOutDiagonalEntries();
+                sum = sum + abs(S[i]-H[j]);
+                A[i][j] = sum;
+            }else if (i > j){
+                A[i][j] = min(A[i-1][j], A[i-1][j-1] + (S[i]-H[j]));
+            }else{
+                //not suppose to be here!
             }
         }
     }
@@ -44,6 +51,6 @@ int IterSolve(ProblemInfo *PInfo) {
     
     
     
-    return Result;
+    return A[m+1][n+1];
     
 }
