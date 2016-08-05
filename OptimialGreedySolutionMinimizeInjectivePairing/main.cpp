@@ -15,7 +15,7 @@ using namespace std;
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    bool IterMode = true, RecMode = false;
+    bool IterMode = true, RecMode = true;
 //    if (argc != 2) {
 //        cout << "Recursive Usage: \"Match R < sample.in\"" << endl;
 //        cout << "Iterative Usage: \"Match I < sample.in\"" << endl;

@@ -17,7 +17,7 @@ using namespace std;
 
 
 int IterSolve(ProblemInfo *PInfo) {
-    int Result = 999999999;
+//    int Result = 999999999;
     int m = PInfo->m;
     int n = PInfo->n;
     int* S = PInfo->S;
@@ -51,6 +51,6 @@ int IterSolve(ProblemInfo *PInfo) {
     
     
     
-    return A[m+1][n+1];
+    return A[m][n];
     
 }

@@ -9,6 +9,7 @@
 #include "RecSolver.hpp"
 #include <cstdlib>
 #include "PInfo.hpp"
+#include <algorithm>
 
 #define Inf 100000
 
@@ -20,11 +21,30 @@ using namespace std;
 int ComputeC(int i, int j, ProblemInfo *PInfo, int **C) {
     // Compute C[i,j]
     // Remember to store the resulting value in C array
-    //
-    //
-    //
-    //
-    //
+    if (i == 0) {
+        C[i][j]= 0;
+        return C[i][j];
+    }
+    if (j == 1) {
+        C[i][j] = abs(PInfo->S[0] - PInfo->H[0]);
+        return C[i][j];
+    }
+//    
+//    //memoize c[i][j=1]
+    for (int iSkis = 0 ; iSkis<i; iSkis++) {
+        C[iSkis][1]= C[i][j] = abs(PInfo->S[0] - PInfo->H[0]);
+    }
+    
+    C[i-1][j-1]= ComputeC(i-1, j-1, PInfo, C);
+    
+    if (i==j) {
+        C[i][j] = C[i-1][j-1] + abs(PInfo->S[i-1]-PInfo->H[j-1]);
+        return C[i][j];
+    }
+    //else
+    C[i-1][j]= ComputeC(i-1, j, PInfo, C);
+    
+    C[i][j] = min(C[i-1][j], (C[i-1][j-1] + abs(PInfo->S[i-1]-PInfo->H[j-1])));
     
     return C[i][j];
     
