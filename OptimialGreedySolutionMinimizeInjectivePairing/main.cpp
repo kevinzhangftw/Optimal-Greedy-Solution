@@ -15,7 +15,7 @@ using namespace std;
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    bool IterMode = true, RecMode = true;
+    bool IterMode = false, RecMode = true;
 //    if (argc != 2) {
 //        cout << "Recursive Usage: \"Match R < sample.in\"" << endl;
 //        cout << "Iterative Usage: \"Match I < sample.in\"" << endl;
@@ -33,7 +33,7 @@ int main(int argc, const char * argv[]) {
 //    }
     
     ProblemInfo *PInfo = new ProblemInfo();
-    PInfo->m = 5;
+    PInfo->m = 6;
     PInfo->n = 5;
     PInfo->S = new int[PInfo->m];
     PInfo->H = new int[PInfo->n];
@@ -50,7 +50,7 @@ int main(int argc, const char * argv[]) {
 
     
 //    PInfo->Read();
-    
+    cout << "the solution: " << endl;
     if (IterMode) {
         cout << " " << IterSolve(PInfo) << endl;
     }
